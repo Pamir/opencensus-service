@@ -27,6 +27,8 @@ import (
 type stackdriverConfig struct {
 	ProjectID     string `yaml:"project,omitempty"`
 	EnableTracing bool   `yaml:"enable_tracing,omitempty"`
+	EnableMetrics bool   `yaml:"enable_metrics,omitempty"`
+	MetricPrefix  string `yaml:"metric_prefix,omitempty"`
 }
 
 type stackdriverExporter struct {
@@ -53,7 +55,7 @@ func StackdriverTraceExportersFromYAML(config []byte) (tes []exporter.TraceExpor
 	if sc == nil {
 		return nil, nil, nil
 	}
-	if !sc.EnableTracing {
+	if !sc.EnableTracing && !sc.EnableMetrics {
 		return nil, nil, nil
 	}
 
@@ -64,13 +66,15 @@ func StackdriverTraceExportersFromYAML(config []byte) (tes []exporter.TraceExpor
 	}
 
 	sde, serr := stackdriver.NewExporter(stackdriver.Options{
-		ProjectID: sc.ProjectID,
+		ProjectID:    sc.ProjectID,
+		MetricPrefix: sc.MetricPrefix,
 	})
 	if serr != nil {
 		return nil, nil, fmt.Errorf("Cannot configure Stackdriver Trace exporter: %v", serr)
 	}
 
-	tes = append(tes, &stackdriverExporter{exporter: sde})
+	exp := &stackdriverExporter{exporter: sde}
+	tes = append(tes, exp)
 	doneFns = append(doneFns, func() error {
 		sde.Flush()
 		return nil
@@ -83,4 +87,13 @@ func (sde *stackdriverExporter) ExportSpans(ctx context.Context, td data.TraceDa
 	// if trace.ExportSpan was constraining and if perhaps the Stackdriver
 	// upload can use the context and information from the Node.
 	return exportSpans(ctx, "stackdriver", sde.exporter, td)
+}
+
+var _ exporter.MetricsExporter = (*stackdriverExporter)(nil)
+
+func (sde *stackdriverExporter) ExportMetricsData(ctx context.Context, md data.MetricsData) error {
+	for _, metric := range md.Metrics {
+		_ = sde.exporter.ExportMetric(ctx, md.Node, md.Resource, metric)
+	}
+	return nil
 }

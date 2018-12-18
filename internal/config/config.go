@@ -277,7 +277,7 @@ func eqLocalHost(host string) bool {
 //  + jaeger
 //  + kafka
 //  + opencensus
-func ExportersFromYAMLConfig(config []byte) (traceExporters []exporter.TraceExporter, doneFns []func() error, err error) {
+func ExportersFromYAMLConfig(config []byte) (traceExporters []exporter.TraceExporter, metricsExporters []exporter.MetricsExporter, doneFns []func() error, err error) {
 	parseFns := []struct {
 		name string
 		fn   func([]byte) ([]exporter.TraceExporter, []func() error, error)
@@ -302,6 +302,10 @@ func ExportersFromYAMLConfig(config []byte) (traceExporters []exporter.TraceExpo
 			if te != nil {
 				traceExporters = append(traceExporters, te)
 				nonNilExporters++
+
+				if me, ok := te.(exporter.MetricsExporter); ok {
+					metricsExporters = append(metricsExporters, me)
+				}
 			}
 		}
 

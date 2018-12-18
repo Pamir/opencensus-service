@@ -8,6 +8,14 @@ contrib.go.opencensus.io/exporter/ocagent v0.3.0 h1:fyqPXp7d+BBV3tXa7EE1CYrObJr7
 contrib.go.opencensus.io/exporter/ocagent v0.3.0/go.mod h1:0fnkYHF+ORKj7HWzOExKkUHeFX79gXSKUQbpnAM+wzo=
 contrib.go.opencensus.io/exporter/stackdriver v0.7.0 h1:pmo1ol3uPcrLmvOET8bEbu5sialRZDDSHqJso0vo28o=
 contrib.go.opencensus.io/exporter/stackdriver v0.7.0/go.mod h1:hNe5qQofPbg6bLQY5wHCvQ7o+2E5P8PkegEuQ+MyRw0=
+contrib.go.opencensus.io/exporter/stackdriver v0.8.1-0.20181211145604-281244432d1d h1:nVSlaKwNDpyYKYC6sc0XDN1YTWxzpGKAauPVTawNRZ4=
+contrib.go.opencensus.io/exporter/stackdriver v0.8.1-0.20181211145604-281244432d1d/go.mod h1:hNe5qQofPbg6bLQY5wHCvQ7o+2E5P8PkegEuQ+MyRw0=
+contrib.go.opencensus.io/exporter/stackdriver v0.8.1-0.20181218104022-b9dc1b776fa0 h1:YOZ7sYw7rBfyQHoUs878ko046PN53HIpYx0GeiMcY0g=
+contrib.go.opencensus.io/exporter/stackdriver v0.8.1-0.20181218104022-b9dc1b776fa0/go.mod h1:hNe5qQofPbg6bLQY5wHCvQ7o+2E5P8PkegEuQ+MyRw0=
+contrib.go.opencensus.io/exporter/stackdriver v0.8.1-0.20181218230503-b2c06b2bc22e h1:fN7wGRWCS6aWYgjkBpJLWrie9Qg99XreKIYBUtm8fZg=
+contrib.go.opencensus.io/exporter/stackdriver v0.8.1-0.20181218230503-b2c06b2bc22e/go.mod h1:hNe5qQofPbg6bLQY5wHCvQ7o+2E5P8PkegEuQ+MyRw0=
+contrib.go.opencensus.io/exporter/stackdriver v0.8.1-0.20181218230658-2f8fe2bf2149 h1:IoFxikgeou/wdzYWazNci4baZC8lyFT6x+ZYwgjuUIA=
+contrib.go.opencensus.io/exporter/stackdriver v0.8.1-0.20181218230658-2f8fe2bf2149/go.mod h1:hNe5qQofPbg6bLQY5wHCvQ7o+2E5P8PkegEuQ+MyRw0=
 git.apache.org/thrift.git v0.0.0-20180902110319-2566ecd5d999 h1:sihTnRgTOUSCQz0iS0pjZuFQy/z7GXCJgSBg3+rZKHw=
 git.apache.org/thrift.git v0.0.0-20180902110319-2566ecd5d999/go.mod h1:fPE2ZNJGynbRyZ4dJvy6G277gSllfV2HJqblrnkyeyg=
 git.apache.org/thrift.git v0.0.0-20181101003639-92be4f312b88 h1:km2LQYVCbsEbT7HCJ/nrMopI5CvJUkniCcSf9ZP5+iQ=
